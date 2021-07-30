@@ -10,7 +10,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DEBUG = int(os.environ.get('DEBUG'))
 
-ALLOWED_HOSTS = ['message-app-01.herokuapp.com/']
+ALLOWED_HOSTS = ['message-app-01.herokuapp.com']
 
 # Application definition
 INSTALLED_APPS = [
