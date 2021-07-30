@@ -6,11 +6,11 @@ from datetime import timedelta
 BASE_DIR = Path(__file__).resolve().parent.parent
 ROOT_DIR = BASE_DIR.parent
 
-SECRET_KEY = 'django-insecure-!g#as&nrjp69g!hzobndxra5)g2h(!b&@3y!of1r0xi2)voga4'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
-DEBUG = True
+DEBUG = int(os.environ.get('DEBUG'))
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['message-app-01.herokuapp.com/']
 
 # Application definition
 INSTALLED_APPS = [
