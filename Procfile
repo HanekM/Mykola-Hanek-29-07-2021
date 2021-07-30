@@ -1,1 +1,1 @@
-web: gunicorn message.base.wsgi:application
+web: gunicorn --chdir message/ base.wsgi:application
