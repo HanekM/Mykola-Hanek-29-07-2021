@@ -4,6 +4,7 @@ from datetime import timedelta
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+ROOT_DIR = BASE_DIR.parent
 
 SECRET_KEY = 'django-insecure-!g#as&nrjp69g!hzobndxra5)g2h(!b&@3y!of1r0xi2)voga4'
 
@@ -30,12 +31,15 @@ AUTH_USER_MODEL = 'user.User'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # custom middlewares
+    'base.middlewares.ErrorHandler',
 ]
 
 ROOT_URLCONF = 'base.urls'
@@ -95,6 +99,41 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Logging settings
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': 'LVL:{levelname}, TIME:{asctime}, MODULE:{module}, MSG:{message}.',
+            'style': '{',
+        },
+    },
+    'handlers': {
+        'console': {
+            'level': 'INFO',
+            'class': 'logging.StreamHandler',
+        },
+        'file': {
+            'level': 'ERROR',
+            'class': 'logging.FileHandler',
+            'filename':  os.path.join(ROOT_DIR, 'logs/logging.log'),
+            'formatter': 'verbose',
+        }
+    },
+    'root': {
+        'handlers': ['file', 'console'],
+        'level': 'DEBUG'
+    },
+    'loggers': {
+        '': {
+            'handlers': ['console', 'file'],
+            'level': 'ERROR',
+            'propagate': True,
+        },
+    }
+}
 
 # DRF configs
 REST_FRAMEWORK = {
