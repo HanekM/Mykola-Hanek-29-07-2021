@@ -149,5 +149,5 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
 
-# Settings for automatic confuguring db and gunicorn
+# Settings for automatic configuration db and gunicorn
 django_heroku.settings(locals())
