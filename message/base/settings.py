@@ -8,9 +8,9 @@ import django_heroku
 BASE_DIR = Path(__file__).resolve().parent.parent
 ROOT_DIR = BASE_DIR.parent
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'super_secret_key')
 
-DEBUG = int(os.environ.get('DEBUG'))
+DEBUG = int(os.environ.get('DEBUG', 0))
 
 ALLOWED_HOSTS = ['message-app-01.herokuapp.com']
 

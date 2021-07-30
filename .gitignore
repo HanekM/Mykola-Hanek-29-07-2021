@@ -224,3 +224,4 @@ Temporary Items
 
 # Static for Django
 static/
+staticfiles/

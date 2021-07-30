@@ -3,10 +3,9 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
-from .services import get_messages_for_user
+from .services import get_messages_for_user, get_prefetched_messages
 from .serializers import MessageSerializer, MessageRetrieveSerializer
-from .permissions import IsSenderOrReceiver
-from .models import Message
+from .permissions import IsReceiver
 
 
 class MessageListCreateAPIView(generics.ListCreateAPIView):
@@ -29,6 +28,6 @@ class MessageListCreateAPIView(generics.ListCreateAPIView):
 
 
 class MessageRetrieveDestroyAPIView(generics.RetrieveDestroyAPIView):
-    queryset = Message.objects.all().select_related('sender', 'receiver')
+    queryset = get_prefetched_messages()
     serializer_class = MessageRetrieveSerializer
-    permission_classes = (IsAuthenticated, IsSenderOrReceiver)
+    permission_classes = (IsAuthenticated, IsReceiver)

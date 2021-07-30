@@ -7,6 +7,5 @@ app_name = 'mail'
 urlpatterns = [
     # api/messages/
     path('', MessageListCreateAPIView.as_view(), name='message-list-create'),
-    path('<int:pk>/', MessageRetrieveDestroyAPIView.as_view(), name='message-retrieve-destoy'),
-
+    path('<int:pk>/', MessageRetrieveDestroyAPIView.as_view(), name='message-retrieve-destoy')
 ]

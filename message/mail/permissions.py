@@ -1,11 +1,10 @@
 from rest_framework.permissions import BasePermission
 
 
-class IsSenderOrReceiver(BasePermission):
+class IsReceiver(BasePermission):
     """
-    Checks whether the user who requested the message is either sender or receiver.
+    Checks whether the user who requested the message is an intended receiver.
     """
 
     def has_permission(self, request, view):
-        message = view.get_object()
-        return request.user == message.sender or request.user == message.receiver
+        return request.user == view.get_object().receiver
