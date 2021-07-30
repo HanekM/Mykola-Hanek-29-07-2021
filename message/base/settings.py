@@ -2,6 +2,8 @@ import os
 from pathlib import Path
 from datetime import timedelta
 
+import django_heroku
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 ROOT_DIR = BASE_DIR.parent
@@ -146,3 +148,6 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
 }
+
+# Settings for automatic confuguring db and gunicorn
+django_heroku.settings(locals())
