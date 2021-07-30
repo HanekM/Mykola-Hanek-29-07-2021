@@ -1,1 +1,1 @@
-web: gunicorn base.wsgi:application
+web: gunicorn message.base.wsgi:application
