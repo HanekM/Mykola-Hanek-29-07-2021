@@ -19,10 +19,6 @@ class MessageListCreateAPIView(generics.ListCreateAPIView):
         return MessageSerializer
 
     def get_queryset(self):
-        """
-        Overriden `get_query_set` method, which is to be used in `list` method later, 
-        so as to get all messages sent to a particular user.
-        """
         return get_messages_for_user(self.request.user)
 
     def post(self, request, *args, **kwargs):

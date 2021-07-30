@@ -1,7 +1,4 @@
 import logging
-import traceback
-
-from django.shortcuts import redirect
 
 
 logger = logging.getLogger(__name__)
