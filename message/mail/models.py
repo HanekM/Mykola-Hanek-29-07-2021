@@ -10,8 +10,8 @@ from base.enums import TRUNCATE_LENGTH
 class Message(models.Model):
     sender = models.ForeignKey(get_user_model(), related_name='messages_sent', on_delete=models.CASCADE)
     receiver = models.ForeignKey(get_user_model(), related_name='messages_obtained', on_delete=models.CASCADE)
-    message = models.TextField(_('message content'))
     subject = models.CharField(_('message subject'), max_length=100)
+    message = models.TextField(_('message content'))
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self) -> str:
