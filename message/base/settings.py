@@ -3,6 +3,7 @@ from pathlib import Path
 from datetime import timedelta
 
 import django_heroku
+from django.utils.translation import gettext_lazy as _
 
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -89,11 +90,15 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 # Internationalization
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uk'
 TIME_ZONE = 'UTC'
 USE_I18N = True
 USE_L10N = True
 USE_TZ = True
+
+LANGUAGES = [
+    ('uk', _('Ukrainian')),
+]
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'

@@ -8,7 +8,7 @@ class MessageSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Message
-        fields = ('sender', 'receiver', 'subject', 'message')
+        fields = ('id', 'sender', 'receiver', 'subject', 'message')
 
 
 class MessageRetrieveSerializer(serializers.ModelSerializer):
