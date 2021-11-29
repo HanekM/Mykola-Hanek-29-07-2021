@@ -2,13 +2,15 @@ from rest_framework import generics
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
+from rest_framework.pagination import LimitOffsetPagination
 
-from .services import get_messages_for_user, get_prefetched_messages
-from .serializers import MessageSerializer, MessageRetrieveSerializer
-from .permissions import IsReceiver
+from mail.services import get_messages_for_user, get_prefetched_messages
+from mail.serializers import MessageSerializer, MessageRetrieveSerializer
+from mail.permissions import IsReceiver
 
 
 class MessageListCreateAPIView(generics.ListCreateAPIView):
+    pagination_class = LimitOffsetPagination
     serializer_class = MessageSerializer
     permission_classes = (IsAuthenticated,)
 
